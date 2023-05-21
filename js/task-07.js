@@ -1,12 +1,13 @@
-const refs = {
-    range: document.querySelector("#font-size-control"),
-    text: document.querySelector("#text")
-}
+const fontSizeControl = document.querySelector(`#font-size-control`);
+// console.log(fontSizeControl); 
 
-console.log(refs.range);
-refs.range.addEventListener("input", fontSizeChange);
+const text = document.querySelector(`#text`);
+// console.log(text);
 
-function fontSizeChange() {
-    const selectedOptionValue = refs.range.value;
-    refs.text.style.fontSize = `${selectedOptionValue}px`;
-}
+const changeFontSize = () => {
+    text.style.fontSize = `${fontSizeControl.value}px`;
+    // console.log(text.style.fontSize); // покажет размер шрифта в консоли
+};
+
+fontSizeControl.addEventListener(`input`, changeFontSize);
+fontSizeControl.dispatchEvent(new Event('input'));
